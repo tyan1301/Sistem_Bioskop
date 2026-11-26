@@ -1,0 +1,141 @@
+
+body {
+    background-color: #141414;
+    color: #ffffff;
+}
+
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+
+.admin-sidebar {
+    width: 250px;
+    background-color: #1f1f1f;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.sidebar-brand {
+    padding: 0 15px 30px;
+    border-bottom: 1px solid #333;
+}
+
+.sidebar-brand h4 {
+    color: #e50914;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.sidebar-brand small {
+    color: #888;
+    letter-spacing: 2px;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.sidebar-menu a {
+    color: #bdbdbd;
+    text-decoration: none;
+    padding: 11px 15px;
+    border-radius: 6px;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background-color: #e50914;
+    color: white;
+}
+
+.sidebar-label {
+    color: #777;
+    font-size: 11px;
+    font-weight: bold;
+    margin: 20px 15px 8px;
+    letter-spacing: 1px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding-top: 25px;
+}
+
+.logout-link {
+    display: block;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    padding: 11px 15px;
+    border-radius: 6px;
+}
+
+.logout-link:hover {
+    background-color: #e50914;
+}
+
+/* Main Content */
+
+.admin-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-navbar {
+    background-color: #1f1f1f;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.admin-navbar h5 {
+    margin: 0;
+}
+
+.admin-profile {
+    color: #bbb;
+}
+
+.admin-profile strong {
+    color: white;
+}
+
+.admin-content {
+    padding: 30px;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .admin-wrapper {
+        flex-direction: column;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+    }
+
+    .sidebar-menu {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-navbar {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .admin-content {
+        padding: 20px 15px;
+    }
+}

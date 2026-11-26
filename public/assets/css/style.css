@@ -1,0 +1,24 @@
+body {
+    background-color: #141414;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #1f1f1f;
+}
+
+.text-red {
+    color: #e50914;
+}
+
+.btn-red {
+    background-color: #e50914;
+    color: white;
+    border: none;
+}
+
+.btn-red:hover {
+    background-color: #b20710;
+    color: white;
+}
