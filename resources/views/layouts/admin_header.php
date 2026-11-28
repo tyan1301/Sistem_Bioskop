@@ -21,6 +21,17 @@ $pageTitle = $pageTitle ?? 'Dashboard Admin';
 
 <div class="admin-wrapper">
 
+    
+<?php
+$baseUrl = '/bioskop/public';
+$currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+$isDashboard = ($currentPath === $baseUrl . '/admin' ||
+                $currentPath === $baseUrl . '/admin/');
+
+$isMovies = strpos($currentPath, $baseUrl . '/admin/movies') === 0;
+?>
+
     <!-- Sidebar -->
     <aside class="admin-sidebar">
 
@@ -31,14 +42,21 @@ $pageTitle = $pageTitle ?? 'Dashboard Admin';
 
         <nav class="sidebar-menu">
 
-            <a href="/bioskop/public/admin" class="active">
+            <a href="<?= $baseUrl ?>/admin"
+            class="<?= $isDashboard ? 'active' : '' ?>">
                 Dashboard
             </a>
 
             <div class="sidebar-label">MANAJEMEN BIOSKOP</div>
 
-            <a href="/bioskop/public/admin/movies">Data Film</a>
-            <a href="#">Genre Film</a>
+            <a href="<?= $baseUrl ?>/admin/movies"
+            class="<?= $isMovies ? 'active' : '' ?>">
+                Data Film
+            </a>
+            <a href="/bioskop/public/admin/genres"
+            class="<?= strpos($currentPath, $baseUrl . '/admin/genres') === 0 ? 'active' : '' ?>">
+                Genre Film
+            </a>
             <a href="#">Studio</a>
             <a href="#">Kursi</a>
             <a href="#">Jadwal Tayang</a>
@@ -53,12 +71,13 @@ $pageTitle = $pageTitle ?? 'Dashboard Admin';
         </nav>
 
         <div class="sidebar-bottom">
-            <a href="/bioskop/public/logout" class="logout-link">
+            <a href="<?= $baseUrl ?>/logout" class="logout-link">
                 Logout
             </a>
         </div>
 
     </aside>
+
 
     <!-- Main Content -->
     <main class="admin-main">
