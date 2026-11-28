@@ -1,85 +1,85 @@
 <?php
-/**
- * @var array $genres
- */
+$pageTitle = 'Manajemen Genre';
 
-require __DIR__ . '/../../layouts/admin_header.php';
+require_once __DIR__ . '/../../layouts/admin_header.php';
 ?>
 
-<div class="admin-content">
+<div class="container-fluid">
 
-    <div class="page-header">
-        <h2>Manajemen Genre</h2>
-        <p>Kelola daftar genre film yang tersedia di bioskop.</p>
-    </div>
-
-    <div class="content-card">
-
-        <div class="content-header">
-            <h3>Daftar Genre</h3>
-
-            <a href="/Sistem_Bioskop/public/admin/genres/create"
-               class="btn btn-primary">
-                + Tambah Genre
-            </a>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2>Manajemen Genre</h2>
+            <p class="text-secondary">
+                Kelola daftar genre film yang tersedia di bioskop.
+            </p>
         </div>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Genre</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
+        <a href="/bioskop/public/admin/genres/create" class="btn btn-danger">
+            + Tambah Genre
+        </a>
+    </div>
 
-            <tbody>
-                <?php if (empty($genres)): ?>
+    <div class="card bg-dark text-white border-secondary">
+        <div class="card-body">
 
-                    <tr>
-                        <td colspan="3" class="text-center">
-                            Belum ada data genre.
-                        </td>
-                    </tr>
-
-                <?php else: ?>
-
-                    <?php $no = 1; ?>
-
-                    <?php foreach ($genres as $genre): ?>
+            <div class="table-responsive">
+                <table class="table table-dark table-hover">
+                    <thead>
                         <tr>
-                            <td><?= $no++ ?></td>
-
-                            <td>
-                                <?= htmlspecialchars($genre['name']) ?>
-                            </td>
-
-                            <td>
-                                <a href="/Sistem_Bioskop/public/admin/genres/edit?id=<?= $genre['id'] ?>"
-                                   class="btn btn-warning">
-                                    Edit
-                                </a>
-
-                                <form action="/Sistem_Bioskop/public/admin/genres/delete?id=<?= $genre['id'] ?>"
-                                      method="POST"
-                                      style="display:inline;"
-                                      onsubmit="return confirm('Yakin ingin menghapus genre ini?')">
-
-                                    <button type="submit" class="btn btn-danger">
-                                        Hapus
-                                    </button>
-
-                                </form>
-                            </td>
+                            <th>No</th>
+                            <th>Nama Genre</th>
+                            <th>Aksi</th>
                         </tr>
-                    <?php endforeach; ?>
+                    </thead>
 
-                <?php endif; ?>
-            </tbody>
-        </table>
+                    <tbody>
+                        <?php if (!empty($genres)): ?>
 
+                            <?php foreach ($genres as $index => $genre): ?>
+                                <tr>
+                                    <td><?= $index + 1 ?></td>
+
+                                    <td>
+                                        <?= htmlspecialchars($genre['name']) ?>
+                                    </td>
+
+                                    <td>
+                                        <a href="/bioskop/public/admin/genres/edit?id=<?= $genre['id'] ?>"
+                                           class="btn btn-sm btn-warning">
+                                            Edit
+                                        </a>
+
+                                        <form action="/bioskop/public/admin/genres/delete?id=<?= $genre['id'] ?>"
+                                              method="POST"
+                                              style="display: inline;"
+                                              onsubmit="return confirm('Yakin ingin menghapus genre ini?');">
+
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                Hapus
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+
+                        <?php else: ?>
+
+                            <tr>
+                                <td colspan="3" class="text-center text-secondary">
+                                    Belum ada data genre.
+                                </td>
+                            </tr>
+
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
     </div>
 
 </div>
 
-<?php require __DIR__ . '/../../layouts/admin_footer.php'; ?>
+<?php
+require_once __DIR__ . '/../../layouts/admin_footer.php';
+?>

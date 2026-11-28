@@ -7,11 +7,17 @@ require_once __DIR__ . '/../app/Controllers/AuthController.php';
 require_once __DIR__ . '/../app/Controllers/DashboardController.php';
 require_once __DIR__ . '/../app/Controllers/MovieController.php';
 require_once __DIR__ . '/../app/Controllers/GenreController.php';
+require_once __DIR__ . '/../app/Controllers/StudioController.php';
+require_once __DIR__ . '/../app/Controllers/SeatController.php';
+require_once __DIR__ . '/../app/Controllers/ScheduleController.php';
 
 $authController = new AuthController($pdo);
 $dashboardController = new DashboardController($pdo);
 $movieController = new MovieController($pdo);
 $genreController = new GenreController($pdo);
+$studioController = new StudioController($pdo);
+$seatController = new SeatController($pdo);
+$scheduleController = new ScheduleController($pdo);
 
 // Memeriksa apakah pengguna adalah admin
 function checkAdmin($baseUrl)
@@ -116,6 +122,113 @@ $routes = [
         checkAdmin($baseUrl);
         $id = (int) ($_GET['id'] ?? 0);
         $genreController->delete($id);
+    },
+
+    // MANAJEMEN STUDIO
+    '/admin/studios' => function () use ($studioController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $studioController->index();
+    },
+
+    '/admin/studios/create' => function () use ($studioController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $studioController->create();
+    },
+
+    '/admin/studios/store' => function () use ($studioController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $studioController->store();
+    },
+
+    '/admin/studios/edit' => function () use ($studioController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $id = (int) ($_GET['id'] ?? 0);
+        $studioController->edit($id);
+    },
+
+    '/admin/studios/update' => function () use ($studioController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $id = (int) ($_GET['id'] ?? 0);
+        $studioController->update($id);
+    },
+
+    '/admin/studios/delete' => function () use ($studioController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $id = (int) ($_GET['id'] ?? 0);
+        $studioController->delete($id);
+    },
+
+    // MANAJEMEN KURSI
+    '/admin/seats' => function () use ($seatController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $seatController->index();
+    },
+
+    '/admin/seats/create' => function () use ($seatController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $seatController->create();
+    },
+
+    '/admin/seats/store' => function () use ($seatController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $seatController->store();
+    },
+
+    '/admin/seats/generate' => function () use ($seatController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $seatController->generate();
+    },
+
+    '/admin/seats/edit' => function () use ($seatController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $id = (int) ($_GET['id'] ?? 0);
+        $seatController->edit($id);
+    },
+
+    '/admin/seats/update' => function () use ($seatController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $id = (int) ($_GET['id'] ?? 0);
+        $seatController->update($id);
+    },
+
+    '/admin/seats/delete' => function () use ($seatController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $id = (int) ($_GET['id'] ?? 0);
+        $seatController->delete($id);
+    },
+
+    // MANAJEMEN JADWAL TAYANG
+    '/admin/schedules' => function () use ($scheduleController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $scheduleController->index();
+    },
+
+    '/admin/schedules/create' => function () use ($scheduleController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $scheduleController->create();
+    },
+
+    '/admin/schedules/store' => function () use ($scheduleController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $scheduleController->store();
+    },
+
+    '/admin/schedules/edit' => function () use ($scheduleController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $id = (int) ($_GET['id'] ?? 0);
+        $scheduleController->edit($id);
+    },
+
+    '/admin/schedules/update' => function () use ($scheduleController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $id = (int) ($_GET['id'] ?? 0);
+        $scheduleController->update($id);
+    },
+
+    '/admin/schedules/delete' => function () use ($scheduleController, $baseUrl) {
+        checkAdmin($baseUrl);
+        $id = (int) ($_GET['id'] ?? 0);
+        $scheduleController->delete($id);
     },
 
     // DASHBOARD KASIR

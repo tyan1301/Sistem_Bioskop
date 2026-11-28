@@ -29,7 +29,7 @@ class GenreController
     public function store()
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /Sistem_Bioskop/public/admin/genres');
+            header('Location: /bioskop/public/admin/genres');
             exit;
         }
 
@@ -43,7 +43,7 @@ class GenreController
             'name' => $name
         ]);
 
-        header('Location: /Sistem_Bioskop/public/admin/genres');
+        header('Location: /bioskop/public/admin/genres');
         exit;
     }
 
@@ -63,7 +63,7 @@ class GenreController
     public function update($id)
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /Sistem_Bioskop/public/admin/genres');
+            header('Location: /bioskop/public/admin/genres');
             exit;
         }
 
@@ -77,7 +77,7 @@ class GenreController
             'name' => $name
         ]);
 
-        header('Location: /Sistem_Bioskop/public/admin/genres');
+        header('Location: /bioskop/public/admin/genres');
         exit;
     }
 
@@ -85,13 +85,13 @@ class GenreController
     public function delete($id)
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /Sistem_Bioskop/public/admin/genres');
+            header('Location: /bioskop/public/admin/genres');
             exit;
         }
 
         $this->genre->delete($id);
 
-        header('Location: /Sistem_Bioskop/public/admin/genres');
+        header('Location: /bioskop/public/admin/genres');
         exit;
     }
 }

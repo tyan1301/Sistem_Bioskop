@@ -30,6 +30,9 @@ $isDashboard = ($currentPath === $baseUrl . '/admin' ||
                 $currentPath === $baseUrl . '/admin/');
 
 $isMovies = strpos($currentPath, $baseUrl . '/admin/movies') === 0;
+$isStudios = strpos($currentPath, $baseUrl . '/admin/studios') === 0;
+$isSeats = strpos($currentPath, $baseUrl . '/admin/seats') === 0;
+$isSchedules = strpos($currentPath, $baseUrl . '/admin/schedules') === 0;
 ?>
 
     <!-- Sidebar -->
@@ -57,9 +60,18 @@ $isMovies = strpos($currentPath, $baseUrl . '/admin/movies') === 0;
             class="<?= strpos($currentPath, $baseUrl . '/admin/genres') === 0 ? 'active' : '' ?>">
                 Genre Film
             </a>
-            <a href="#">Studio</a>
-            <a href="#">Kursi</a>
-            <a href="#">Jadwal Tayang</a>
+            <a href="<?= $baseUrl ?>/admin/studios"
+            class="<?= $isStudios ? 'active' : '' ?>">
+                Studio
+            </a>
+            <a href="<?= $baseUrl ?>/admin/seats"
+            class="<?= $isSeats ? 'active' : '' ?>">
+                Kursi
+            </a>
+            <a href="<?= $baseUrl ?>/admin/schedules"
+            class="<?= $isSchedules ? 'active' : '' ?>">
+                Jadwal Tayang
+            </a>
 
             <div class="sidebar-label">MANAJEMEN LAINNYA</div>
 
